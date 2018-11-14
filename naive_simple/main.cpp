@@ -20,24 +20,27 @@ int main(int argc, char const* argv[])
 
     size_t sizeOfValue = sizeof(Matrix::Value);
 
-    vector<size_t> barriers{ 0, 500 };
+    std::vector<size_t> sizes{ 1000, 1500, 2000 };
 
-    size_t N = 5;
-    for (int i = 1; i < barriers.size(); i++) {
-        size_t step = (barriers[i] - barriers[i - 1]) / 100;
-        for (size_t M = barriers[i - 1]; M < barriers[i]; M += step) {
-            Matrix matA{ N, M }, matB{ M, N };
-            matA.fill();
-            matB.fill();
+    // size_t N = 5;
+    for (auto N : sizes) {
+        Matrix matA{ N, N }, matB{ N, N };
+        matA.fill();
+        matB.fill();
 
-            auto start = high_resolution_clock::now();
-            multiplySimple(matA, matB);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<microseconds>(end - start).count();
+        auto start = high_resolution_clock::now();
+        multiplySimple(matA, matB);
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start).count();
 
-            std::cout << M << ',' << duration << '\n';
-        }
+        start = high_resolution_clock::now();
+        multiplyTranspose(matA, matB);
+        end = high_resolution_clock::now();
+        auto durationTranspose = duration_cast<microseconds>(end - start).count();
+
+        std::cout << N << ',' << duration << ',' << durationTranspose << '\n';
     }
+    std::cout << std::endl;
     return 0;
 }
 

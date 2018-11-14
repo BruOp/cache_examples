@@ -24,4 +24,4 @@ struct Matrix {
 };
 
 void multiplySimple(const Matrix& matA, const Matrix& matB);
-void multiplyTranspose(const Matrix& matA, const Matrix& matB)
+void multiplyTranspose(const Matrix& matA, const Matrix& matB);
