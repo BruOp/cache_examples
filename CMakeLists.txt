@@ -9,4 +9,6 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(matrix_multiplication)
 add_subdirectory(simple_loop)
+add_subdirectory(array_size)
+
 

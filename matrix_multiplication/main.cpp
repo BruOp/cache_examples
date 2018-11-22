@@ -19,17 +19,17 @@ int main(int argc, char const* argv[])
         matA.fill();
         matB.fill();
 
-        // auto start = high_resolution_clock::now();
+        auto start = high_resolution_clock::now();
         multiplySimple(matA, matB);
-        // auto end = high_resolution_clock::now();
-        // auto duration = duration_cast<microseconds>(end - start).count();
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start).count();
 
-        // start = high_resolution_clock::now();
-        // multiplyTranspose(matA, matB);
-        // end = high_resolution_clock::now();
-        // auto durationTranspose = duration_cast<microseconds>(end - start).count();
+        start = high_resolution_clock::now();
+        multiplyTranspose(matA, matB);
+        end = high_resolution_clock::now();
+        auto durationTranspose = duration_cast<microseconds>(end - start).count();
 
-        // std::cout << N << ',' << duration << ',' << durationTranspose << '\n';
+        std::cout << N << ',' << duration << ',' << durationTranspose << '\n';
     }
     std::cout << std::endl;
     return 0;
