@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 #include <vector>
 
 struct Matrix {
-    typedef int Value;
+    typedef uint32_t Value;
     size_t rowSize;
     size_t colSize;
     std::vector<std::vector<Value>> data;
